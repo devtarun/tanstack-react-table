@@ -194,7 +194,6 @@ const TableComponent = () => {
               {table.getHeaderGroups().map((headerGroup) => (
                 <TableRow key={headerGroup.id}>
                   {headerGroup.headers.map((header) => {
-                    console.log("header", header);
                     return (
                       <TableCell
                         key={header.id}
@@ -232,32 +231,31 @@ const TableComponent = () => {
                         )}
                         {!header.isPlaceholder && header.column.getCanPin() && (
                           <div>
-                            {console.log("header", header.column.getIsPinned())}
                             {header.column.getIsPinned() !== "left" ? (
-                              <IconButton aria-label="delete">
-                                <KeyboardDoubleArrowLeft
-                                  onClick={() => {
-                                    header.column.pin("left");
-                                  }}
-                                />
+                              <IconButton
+                                onClick={() => {
+                                  header.column.pin("left");
+                                }}
+                              >
+                                <KeyboardDoubleArrowLeft />
                               </IconButton>
                             ) : null}
                             {header.column.getIsPinned() ? (
-                              <IconButton aria-label="delete">
-                                <CancelOutlined
-                                  onClick={() => {
-                                    header.column.pin(false);
-                                  }}
-                                />
+                              <IconButton
+                                onClick={() => {
+                                  header.column.pin(false);
+                                }}
+                              >
+                                <CancelOutlined />
                               </IconButton>
                             ) : null}
                             {header.column.getIsPinned() !== "right" ? (
-                              <IconButton aria-label="delete">
-                                <KeyboardDoubleArrowRight
-                                  onClick={() => {
-                                    header.column.pin("right");
-                                  }}
-                                />
+                              <IconButton
+                                onClick={() => {
+                                  header.column.pin("right");
+                                }}
+                              >
+                                <KeyboardDoubleArrowRight />
                               </IconButton>
                             ) : null}
                           </div>
@@ -271,6 +269,7 @@ const TableComponent = () => {
             <TableBody>
               {rows.map((virtualRow) => {
                 const row = rows[virtualRow.index];
+                console.log("row", row);
                 return (
                   <TableRow
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
